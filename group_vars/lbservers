@@ -31,5 +31,5 @@ affinity_enabled: true
 #
 # ...to override.
 #
-#iface: '{{ ansible_default_ipv4.interface }}'
-iface: eth1
+iface: '{{ ansible_default_ipv4.interface }}'
+#iface: eth1
