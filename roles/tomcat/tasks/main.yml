@@ -27,8 +27,8 @@
 - name: Configure Tomcat server
   template: src=server.xml dest=/usr/share/tomcat/conf/
 
-- name: Configure Tomcat users
-  template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
+#- name: Configure Tomcat users
+#  template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
 
 #- name: Install Tomcat init script
 #  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
