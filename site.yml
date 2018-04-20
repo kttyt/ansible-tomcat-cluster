@@ -32,4 +32,4 @@
   remote_user: root
   
   roles:
-    - tomcat
+    - etcd
