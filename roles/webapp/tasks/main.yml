@@ -3,10 +3,10 @@
   service: name=tomcat state=stopped
 
 - name: Copy WAR file
-  copy: src={{war_file}} dest=/usr/share/tomcat/webapps/{{app_context}}.war
+  copy: src={{war_file}} dest=/usr/share/tomcat/webapps/{{app_context}}.war group=tomcat owner=tomcat
 
-- name: Change ownership of WAR file
-  file: path=/usr/share/tomcat/webapps/{{app_context}}.war owner=tomcat group=tomcat state=file
+#- name: Change ownership of WAR file
+#  file: path=/usr/share/tomcat/webapps/{{app_context}}.war owner=tomcat group=tomcat state=file
 
 - name: Start tomcat
   service: name=tomcat state=started
