@@ -5,7 +5,7 @@
   yum: name=etcd state=present
 
 - name: Configure the etcd conf file with hosts
-  template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf
+  template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf owner=etcd group=etcd
 
 - name: Start the etcd service
   service: name=etcd state=started enabled=yes
