@@ -1,0 +1,15 @@
+---
+  - name: Flush nat table
+    iptables:
+      table: nat
+      flush: yes
+      
+  - name: Flush mangle table
+    iptables:
+      table: nat
+      flush: yes
+      
+  - name: Flush all chains
+    iptables:
+      table: nat
+      flush: yes
