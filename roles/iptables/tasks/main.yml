@@ -6,10 +6,10 @@
       
   - name: Flush mangle table
     iptables:
-      table: nat
+      table: mangle
       flush: yes
       
   - name: Flush all chains
     iptables:
-      table: nat
       flush: yes
+     
