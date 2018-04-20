@@ -1,0 +1,11 @@
+---
+# This role installs HAProxy and configures it.
+
+- name: Download and install etcd
+  yum: name=etcd state=present
+
+- name: Configure the etcd cfg file with hosts
+  template: src=etcd.cfg.j2 dest=/etc/etcd/etcd.cfg
+
+- name: Start the etcd service
+  service: name=etcd state=started enabled=yes

@@ -4,3 +4,8 @@ ansible2.groman.com
 
 [lbservers]
 ansible.groman.com
+
+[etcd-servers]
+ansible1.groman.com
+ansible2.groman.com
+ansible.groman.com

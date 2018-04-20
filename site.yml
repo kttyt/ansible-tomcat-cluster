@@ -27,3 +27,9 @@
 
   roles:
     - haproxy
+    
+- hosts: etcd-servers 
+  remote_user: root
+  
+  roles:
+    - tomcat
