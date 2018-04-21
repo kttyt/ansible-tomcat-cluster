@@ -5,7 +5,7 @@
   copy:
      src: "{{ item }}"
      dest: /tmp/
-     with_items: "{{ rpm_names }}"
+  with_items: "{{ rpm_names }}"
 
 - name: Install packages.
   yum:
