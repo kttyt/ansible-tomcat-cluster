@@ -19,5 +19,5 @@
   service: name=stolon-proxy state=started enabled=yes
 
 - name: Init stolon cluster
-  command: stolonctl --cluster-name cluster01 --store-backend etcdv3 init
+  shell: echo yes | stolonctl --cluster-name cluster01 --store-backend etcdv3 init
   run_once: True
