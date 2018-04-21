@@ -36,7 +36,7 @@ backend app
     {% if affinity_enabled  %}
         cookie SERVERID insert indirect nocache
     {% endif %}
-    {% for host in groups['tomcat-servers'] %}
+    {% for host in groups['backend'] %}
         {% if affinity_enabled  %}
             server {{ host }} {{ hostvars[host]['ansible_' + iface].ipv4.address }}:{{ httpd_port }} check cookie s{{ loop.index }}
         {% else %}
