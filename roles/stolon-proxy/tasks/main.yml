@@ -3,13 +3,13 @@
 
 - name: Copy rpm files to server
   copy:
-     src: {{ item }}
+     src: "{{ item }}"
      dest: /tmp/
-     with_items: {{ rpm_names }}
+     with_items: "{{ rpm_names }}"
 
 - name: Install packages.
   yum:
-     name: {{ rpm_names | map('regex_replace', '^', '/tmp/' ) | list }}
+     name: "{{ rpm_names | map('regex_replace', '^', '/tmp/' ) | list }}"
      state: present
 
 - name: Configure the stolon-proxy conf file 

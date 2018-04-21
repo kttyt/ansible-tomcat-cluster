@@ -1,4 +1,4 @@
-[tomcat-servers]
+[backend]
 ansible1.groman.com
 ansible2.groman.com
 

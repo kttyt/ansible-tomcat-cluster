@@ -4,14 +4,17 @@
   remote_user: root
   roles:
     - etcd
+    - iptables
 
-- hosts: tomcat-servers 
-  include_vars: pg_cred.yml
+- hosts: backend 
+  vars_files:
+    - pg_cred.yml
   remote_user: root
   roles:
     - tomcat
     - webapp
     - postgresql96
+    - stolon-keeper
 
 - hosts: lbservers
   remote_user: root
