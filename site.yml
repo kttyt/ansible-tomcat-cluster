@@ -3,8 +3,8 @@
 - hosts: all 
   remote_user: root
   roles:
-    - etcd
     - iptables
+    - etcd
 
 - hosts: backend 
   vars_files:
