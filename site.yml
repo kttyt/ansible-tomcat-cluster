@@ -7,8 +7,6 @@
     - etcd
 
 - hosts: backend 
-  vars_files:
-    - pg_cred.yml
   remote_user: root
   roles:
     - tomcat
