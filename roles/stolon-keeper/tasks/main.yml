@@ -1,0 +1,41 @@
+---
+# This role installs HAProxy and configures it.
+
+- name: Copy rpm files to server
+  copy:
+     src: {{ item }}
+     dest: /tmp/
+     with_items: {{ rpm_names }}
+
+- name: Install packages.
+  yum:
+     name: {{ rpm_names | map('regex_replace', '^', '/tmp/' ) | list }}
+     state: present
+
+- name: Configure the stolon-sentinel conf file
+  template: src=stolon-sentinel.j2 dest=/etc/sysconfig/stolon-sentinel owner=stolon group=stolon
+
+- name: Configure the stolon-keeper conf file
+  template: src=stolon-keeper.j2 dest=/etc/sysconfig/stolon-keeper owner=stolon group=stolon
+  
+- name: Write postgres cred 
+  copy:
+     content: {{ pgpass_postgres }}
+     dest: /etc/stolon/secrets/pgpass.postgres
+     mode: 0600
+     owner: stolon
+     group: stolon
+
+- name: Write postgres cred
+  copy:
+     content: {{ pgpass_replication }}
+     dest: /etc/stolon/secrets/pgpass.replication
+     mode: 0600
+     owner: stolon
+     group: stolon
+
+- name: Start the stolon-sentinel service
+  service: name=stolon-sentinel state=started enabled=yes
+
+- name: Start the stolon-keeper service
+  service: name=stolon-keeper state=started enabled=yes

@@ -1,0 +1,21 @@
+# default configuration values
+STSENTINEL_CLUSTER_NAME=cluster01
+STSENTINEL_KEEPER_PORT=5431
+STSENTINEL_LISTEN_ADDRESS={{ ansible_default_ipv4.address }}
+STSENTINEL_PORT=6431
+
+# store configuration
+STSENTINEL_STORE_BACKEND=etcdv3
+STSENTINEL_STORE_ENDPOINTS=127.0.0.1:2379
+
+# this is only used for initialisation
+STSENTINEL_INITIAL_CLUSTER_CONFIG=/etc/stolon/cluster-config.json
+
+# set this to force discovery type, eg: store, kubernetes
+# STSENTINEL_DISCOVERY_TYPE=store
+
+# set this for debugging
+# STSENTINEL_DEBUG=true
+
+# add any extra command line options to pass the stolon-keeper binary
+EXTRA_OPTS=

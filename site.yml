@@ -1,35 +1,20 @@
 ---
-# This playbook deploys a simple Tomcat 7 cluster behind an HAProxy. 
 
-- hosts: all
+- hosts: all 
   remote_user: root
-#  become: yes
-#  become_method: sudo
-# Install epel
-
   roles:
-#    - common
-    - iptables
+    - etcd
 
 - hosts: tomcat-servers 
+  include_vars: pg_cred.yml
   remote_user: root
-#  become: yes
-#  become_method: sudo
-
   roles:
     - tomcat
     - webapp
+    - postgresql96
 
 - hosts: lbservers
   remote_user: root
-#  become: yes
-#  become_method: sudo
-
   roles:
     - haproxy
-    
-- hosts: etcd-servers 
-  remote_user: root
-  
-  roles:
-    - etcd
+    - stolon-proxy

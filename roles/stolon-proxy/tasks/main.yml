@@ -1,0 +1,19 @@
+---
+# This role installs HAProxy and configures it.
+
+- name: Copy rpm files to server
+  copy:
+     src: {{ item }}
+     dest: /tmp/
+     with_items: {{ rpm_names }}
+
+- name: Install packages.
+  yum:
+     name: {{ rpm_names | map('regex_replace', '^', '/tmp/' ) | list }}
+     state: present
+
+- name: Configure the stolon-proxy conf file 
+  template: src=stolon-proxy.j2 dest=/etc/sysconfig/stolon-proxy owner=stolon group=stolon
+
+- name: Start the stolon-proxy service
+  service: name=stolon-proxy state=started enabled=yes

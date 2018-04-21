@@ -1,0 +1,14 @@
+# default configuration values
+STPROXY_CLUSTER_NAME=cluster01
+STPROXY_LISTEN_ADDRESS={{ ansible_default_ipv4.address }}
+STPROXY_PORT=5432
+
+# store configuration
+STPROXY_STORE_BACKEND=etcdv3
+STPROXY_STORE_ENDPOINTS=127.0.0.1:2379
+
+# set this for debugging
+# STPROXY_DEBUG=true
+
+# add any extra command line options to pass the stolon-keeper binary
+EXTRA_OPTS=
